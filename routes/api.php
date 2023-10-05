@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,16 @@ Route::controller(UserController::class)->group(function () {
         Route::get('/users/{user}', 'show');
         Route::put('/users/{user}', 'update');
         Route::delete('/users/{user}', 'destroy');
+    });
+});
+
+Route::controller(RoleController::class)->group(function () {
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::get('/roles', 'index');
+        Route::post('/roles', 'store');
+        Route::get('/roles/{role}', 'show');
+        Route::put('/roles/{role}', 'update');
+        Route::delete('/roles/{role}', 'destroy');
     });
 });
 

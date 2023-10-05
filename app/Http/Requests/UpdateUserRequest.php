@@ -23,7 +23,8 @@ class UpdateUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'string|max:255'
+            'name' => 'string|max:255',
+            'role_id' => 'exists:roles,id'
         ];
     }
 }
