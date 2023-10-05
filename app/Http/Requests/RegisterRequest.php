@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreUserRequest extends FormRequest
+class RegisterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,8 @@ class StoreUserRequest extends FormRequest
         return [
             'name' => 'string|max:255|required',
             'email' => 'email|max:255|required|unique:users,email',
-            'password' => 'string|max:255|required'
+            'password' => 'string|max:255|required',
+            'password_confirm' => 'string|max:255|required'
         ];
     }
 }
